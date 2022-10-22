@@ -23,8 +23,8 @@
             <TableView layoutX="34.0" layoutY="87.0" prefHeight="396.0" prefWidth="548.0" stylesheets="@../Style/Style.css">
                <columns>
                   <TableColumn prefWidth="139.0" text="Admin ID" />
-                  <TableColumn prefWidth="189.0" text="User Name" />
-                  <TableColumn prefWidth="218.0" text="Password" />
+                  <TableColumn prefWidth="200.0" text="User Name" />
+                  <TableColumn prefWidth="207.0" text="Password" />
                </columns>
                <effect>
                   <DropShadow spread="0.07" />
