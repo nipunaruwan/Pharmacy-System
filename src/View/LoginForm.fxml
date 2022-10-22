@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,9 +11,14 @@
 
 <AnchorPane prefHeight="551.0" prefWidth="775.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginFormController">
    <children>
-      <ImageView fitHeight="554.0" fitWidth="303.0" layoutX="1.0" layoutY="-3.0" pickOnBounds="true" smooth="false">
+      <ImageView fitHeight="554.0" fitWidth="303.0" layoutX="1.0" pickOnBounds="true" smooth="false">
          <image>
-            <Image url="@../img/240_F_183377358_NVdEhF1NoA9zOGRVp4TLO90U9Vam2r5F.jpg" />
+            <Image url="@../img/prescricao-de-enchimento-farmaceutico-na-farmacia-farmacia_67340-187.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="430.0" fitWidth="435.0" layoutX="319.0" layoutY="76.0" opacity="0.16" pickOnBounds="true">
+         <image>
+            <Image url="@../img/depositphotos_4392917-stock-photo-happy-pill-3d-illustration.jpg" />
          </image>
       </ImageView>
       <JFXTextField layoutX="379.0" layoutY="183.0" prefHeight="25.0" prefWidth="358.0" promptText="U s e r n a m e" />
@@ -38,4 +44,7 @@
          </image>
       </ImageView>
    </children>
+   <effect>
+      <DropShadow />
+   </effect>
 </AnchorPane>

@@ -2,3 +2,10 @@
     -fx-border-radius-color:#0652DD;
     -fx-background-radius: 50px 50px 50px 50px;
 }
+.table-view .column-header .nested-column-header
+{
+    -fx-background-color: #f60101;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 2, 0.5, 1, 1);
+}
