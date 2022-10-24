@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="750.0" prefWidth="875.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="759.0" prefWidth="881.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane layoutX="18.0" layoutY="16.0" prefHeight="714.0" prefWidth="288.0" style="-fx-background-color: darkgray; -fx-background-radius: 20;">
+      <Pane layoutX="18.0" layoutY="15.0" prefHeight="734.0" prefWidth="288.0" style="-fx-background-color: darkgray; -fx-background-radius: 20;">
          <effect>
             <DropShadow height="32.62" radius="12.905" />
          </effect>
@@ -50,7 +50,7 @@
             <JFXComboBox layoutX="25.0" layoutY="460.0" prefHeight="25.0" prefWidth="237.0" promptText="Doctor ID" />
          </children>
       </Pane>
-      <Pane layoutX="319.0" layoutY="15.0" prefHeight="714.0" prefWidth="536.0" style="-fx-background-color: white; -fx-background-radius: 20;" stylesheets="@../Style/Style.css">
+      <Pane layoutX="319.0" layoutY="15.0" prefHeight="734.0" prefWidth="536.0" style="-fx-background-color: white; -fx-background-radius: 20;" stylesheets="@../Style/Style.css">
          <effect>
             <DropShadow />
          </effect>
