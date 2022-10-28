@@ -24,7 +24,8 @@ public class LoginFormController {
     public JFXTextField txtUsername;
     public JFXPasswordField txtpassword;
     public AnchorPane root;
-    public JFXButton btnLogin;
+//    public JFXButton btnLogin;
+    public JFXButton btnL;
     LinkedHashMap<TextField, Pattern> map = new LinkedHashMap<>();
 
     Pattern titleRegEx = Pattern.compile("^[A-z]{1,5}$");
@@ -59,7 +60,7 @@ LoginFormManager();
     }
 
     public void KeyRelease(KeyEvent keyEvent) {
-        Object response = ValidationUtil.validate(map, btnLogin);
+        Object response = ValidationUtil.validate(map, btnL);
 
         if (keyEvent.getCode() == KeyCode.ENTER) {
             if (response instanceof TextField) {
@@ -67,8 +68,8 @@ LoginFormManager();
                 errorText.requestFocus();
             } else if (response instanceof Boolean) {
                 // new Alert(Alert.AlertType.INFORMATION, "Added").showAndWait();
-            }
-        }
+          }
+       }
 
     }
 }

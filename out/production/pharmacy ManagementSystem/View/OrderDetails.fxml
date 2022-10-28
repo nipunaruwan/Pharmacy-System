@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="759.0" prefWidth="881.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="Controller.OrderDetailsController">
+<AnchorPane prefHeight="759.0" prefWidth="881.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.OrderDetailsController">
    <children>
       <Pane layoutX="18.0" layoutY="25.0" prefHeight="229.0" prefWidth="840.0" style="-fx-background-color: darkgray; -fx-background-radius: 20;">
          <effect>
@@ -139,10 +139,10 @@
             <DropShadow />
          </effect>
          <children>
-            <JFXComboBox layoutX="24.0" layoutY="16.0" prefHeight="25.0" prefWidth="152.0" promptText="Customer ID" />
-            <JFXTextField layoutX="28.0" layoutY="83.0" prefHeight="25.0" prefWidth="152.0" promptText="Doctor ID" />
-            <JFXTextField layoutX="218.0" layoutY="16.0" prefHeight="25.0" prefWidth="160.0" promptText="Customer name" />
-            <JFXTextField layoutX="223.0" layoutY="83.0" prefHeight="25.0" prefWidth="160.0" promptText="Address" />
+            <JFXComboBox fx:id="cmbCustomerIds" layoutX="24.0" layoutY="16.0" prefHeight="25.0" prefWidth="152.0" promptText="Customer ID" />
+            <JFXTextField fx:id="txtdId" layoutX="28.0" layoutY="83.0" prefHeight="25.0" prefWidth="152.0" promptText="Doctor ID" />
+            <JFXTextField fx:id="txtName" layoutX="218.0" layoutY="16.0" prefHeight="25.0" prefWidth="160.0" promptText="Customer name" />
+            <JFXTextField fx:id="txtCustomerAddress" layoutX="223.0" layoutY="83.0" prefHeight="25.0" prefWidth="160.0" promptText="Address" />
          </children>
       </Pane>
       <Pane layoutX="458.0" layoutY="34.0" prefHeight="149.0" prefWidth="373.0" style="-fx-background-color: white; -fx-background-radius: 20;">

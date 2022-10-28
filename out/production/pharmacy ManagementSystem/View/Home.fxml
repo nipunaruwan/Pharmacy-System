@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="759.0" prefWidth="881.0" style="-fx-background-color: #00ccff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomeController">
    <children>
-      <Pane layoutX="25.0" layoutY="18.0" prefHeight="282.0" prefWidth="253.0" style="-fx-background-color: #0033ff; -fx-background-radius: 20;">
+      <Pane layoutX="25.0" layoutY="18.0" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" prefHeight="282.0" prefWidth="253.0" style="-fx-background-color: #0033ff; -fx-background-radius: 20;">
          <effect>
             <DropShadow />
          </effect>
@@ -22,7 +22,7 @@
                   <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <ImageView fitHeight="150.0" fitWidth="105.0" layoutX="70.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgCustomer" fitHeight="150.0" fitWidth="105.0" layoutX="70.0" layoutY="24.0" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/icons8-customer-64.png" />
                </image>
@@ -84,7 +84,7 @@
             </Pane>
          </children>
       </Pane>
-      <ImageView fitHeight="150.0" fitWidth="105.0" layoutX="376.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imgDoctor" fitHeight="150.0" fitWidth="105.0" layoutX="376.0" layoutY="37.0" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/icons8-doctor-64.png" />
          </image>
@@ -94,7 +94,7 @@
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
-      <ImageView fitHeight="105.0" fitWidth="116.0" layoutX="657.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imgitem" fitHeight="105.0" fitWidth="116.0" layoutX="657.0" layoutY="40.0" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/icons8-add-shopping-cart-64.png" />
          </image>
