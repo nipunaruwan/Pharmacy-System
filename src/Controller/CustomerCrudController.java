@@ -22,7 +22,7 @@ public class CustomerCrudController {
         return ids;
     }
     public static Customer getCustomer(String id) throws SQLException, ClassNotFoundException {
-        PreparedStatement stm = DbConnection.getInstance().getConnection().prepareStatement("SELECT * FROM customer WHERE id=?");
+        PreparedStatement stm = DbConnection.getInstance().getConnection().prepareStatement("SELECT * FROM customer WHERE CID=?");
         stm.setObject(1, id);
         ResultSet rst = stm.executeQuery();
         if (rst.next()) {

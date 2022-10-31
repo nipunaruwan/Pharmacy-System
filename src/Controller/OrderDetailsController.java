@@ -43,7 +43,7 @@ public class OrderDetailsController {
             if (c!=null) {
                 txtdId.setText(c.getDID());
                 txtName.setText(c.getName());
-                txtCustomerAddress.setText(c.getName());
+                txtCustomerAddress.setText(c.getAddress());
             }else{
                 new Alert(Alert.AlertType.WARNING,"Empty Result").show();
             }

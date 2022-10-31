@@ -8,7 +8,7 @@ public class DbConnection {
     private static DbConnection dbConnection=null;
     private final Connection connection;
 
-    public DbConnection() throws ClassNotFoundException, SQLException {
+    private DbConnection() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
         connection = DriverManager.getConnection(
                 "jdbc:mysql://127.0.0.1:3306/pharmacysystem",
