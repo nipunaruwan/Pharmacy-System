@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="750.0" prefWidth="875.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="750.0" prefWidth="875.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DiliveryController">
    <children>
       <Pane layoutX="23.0" layoutY="15.0" prefHeight="714.0" prefWidth="832.0" style="-fx-background-color: #dbc9ff; -fx-background-radius: 20;" stylesheets="@../Style/Style.css">
          <effect>
@@ -27,30 +27,37 @@
                   <DropShadow spread="0.07" />
                </effect>
             </TableView>
-            <TextField layoutX="14.0" layoutY="39.0" prefHeight="25.0" prefWidth="226.0" promptText="Deliiver ID" />
-            <Button layoutX="248.0" layoutY="39.0" mnemonicParsing="false" styleClass="edge-button" text="Search" />
-            <JFXTextField layoutX="511.0" layoutY="167.0" prefHeight="25.0" prefWidth="237.0" promptText="Deliiver ID" />
-            <JFXTextField layoutX="512.0" layoutY="278.0" prefHeight="25.0" prefWidth="237.0" promptText="Deliver name" />
-            <JFXButton layoutX="503.0" layoutY="450.0" prefHeight="32.0" prefWidth="102.0" style="-fx-background-color: #3385ff;" styleClass="edge-button" stylesheets="@../Style/Style.css" text="ADD">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </JFXButton>
-            <JFXButton layoutX="665.0" layoutY="449.0" prefHeight="32.0" prefWidth="102.0" style="-fx-background-color: #3385ff;" styleClass="edge-button" stylesheets="@../Style/Style.css" text="Clear">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </JFXButton>
-            <JFXButton layoutX="505.0" layoutY="390.0" prefHeight="32.0" prefWidth="102.0" style="-fx-background-color: #3385ff;" styleClass="edge-button" stylesheets="@../Style/Style.css" text="Delecte">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </JFXButton>
-            <JFXButton layoutX="663.0" layoutY="389.0" prefHeight="32.0" prefWidth="102.0" style="-fx-background-color: #3385ff;" styleClass="edge-button" stylesheets="@../Style/Style.css" text="Update">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </JFXButton>
+            <TextField fx:id="txtDsID" layoutX="14.0" layoutY="39.0" prefHeight="25.0" prefWidth="226.0" promptText="Deliiver ID" />
+            <Button layoutX="248.0" layoutY="39.0" mnemonicParsing="false" onAction="#btnsearch" styleClass="edge-button" text="Search" />
+            <Pane layoutX="507.0" layoutY="252.0" prefHeight="445.0" prefWidth="286.0" style="-fx-background-color: darkgray; -fx-background-radius: 20;">
+               <effect>
+                  <DropShadow height="32.62" radius="12.905" />
+               </effect>
+               <children>
+                  <JFXTextField fx:id="txtDs" layoutX="23.0" layoutY="96.0" prefHeight="25.0" prefWidth="237.0" promptText="Deliiver ID" />
+                  <JFXTextField fx:id="txtDsname" layoutX="22.0" layoutY="182.0" prefHeight="25.0" prefWidth="237.0" promptText="Deliver name" />
+                  <JFXButton layoutX="12.0" layoutY="284.0" onAction="#btnsave" prefHeight="32.0" prefWidth="102.0" style="-fx-background-color: #3385ff;" styleClass="edge-button" stylesheets="@../Style/Style.css" text="ADD">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="163.0" layoutY="283.0" onAction="#btnupdate" prefHeight="32.0" prefWidth="102.0" style="-fx-background-color: #3385ff;" styleClass="edge-button" stylesheets="@../Style/Style.css" text="Update">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="7.0" layoutY="367.0" onAction="#btndelete" prefHeight="32.0" prefWidth="102.0" style="-fx-background-color: #3385ff;" styleClass="edge-button" stylesheets="@../Style/Style.css" text="Delete">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="160.0" layoutY="366.0" onAction="#btnclear" prefHeight="32.0" prefWidth="102.0" style="-fx-background-color: #3385ff;" styleClass="edge-button" stylesheets="@../Style/Style.css" text="Clear">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </Pane>
          </children>
       </Pane>
    </children>
