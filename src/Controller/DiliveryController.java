@@ -10,6 +10,7 @@ import model.DiliveryService;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DiliveryController {
@@ -17,8 +18,20 @@ public class DiliveryController {
     public JFXTextField txtDs;
     public JFXTextField txtDsname;
 
-    public void btnsearch(ActionEvent actionEvent) {
-    }
+    public void btnsearch(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        Connection connection = DbConnection.getInstance().getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM dilevary WHERE DSID=?");
+        preparedStatement.setObject(1,txtDsID.getText());
+        ResultSet resultSet= preparedStatement.executeQuery();
+        while (resultSet.next()){
+          txtDs.setText(resultSet.getString(1));
+            txtDsname.setText(resultSet.getString(2));
+
+
+
+        }
+        }
+
 
     public void btnsave(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         DiliveryService diliveryService= new DiliveryService(txtDs.getText(),txtDsname.getText());
@@ -42,7 +55,7 @@ public class DiliveryController {
     public void btndelete(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         Connection connection = DbConnection.getInstance().getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM dilevary WHERE DSID=?");
-        preparedStatement.setObject(1,txtDs);
+        preparedStatement.setObject(1,txtDs.getText());
         int delete= preparedStatement.executeUpdate();
         if (delete>0){
             new Alert(Alert.AlertType.CONFIRMATION,"Deleted",ButtonType.OK).show();
