@@ -12,35 +12,35 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="759.0" prefWidth="881.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="759.0" prefWidth="881.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PaymentController">
    <children>
       <Pane layoutX="18.0" layoutY="25.0" prefHeight="229.0" prefWidth="840.0" style="-fx-background-color: darkgray; -fx-background-radius: 20;">
          <effect>
             <DropShadow height="32.62" radius="12.905" />
          </effect>
          <children>
-            <JFXTextField layoutX="25.0" layoutY="15.0" prefHeight="25.0" prefWidth="237.0" promptText="Payment ID" />
-            <JFXButton layoutX="181.0" layoutY="175.0" prefHeight="32.0" prefWidth="102.0" style="-fx-background-color: #00f2ff;" styleClass="edge-button" stylesheets="@../Style/Style.css" text="ADD">
+            <JFXTextField fx:id="txtpayment" layoutX="25.0" layoutY="15.0" prefHeight="25.0" prefWidth="237.0" promptText="Payment ID" />
+            <JFXButton layoutX="181.0" layoutY="175.0" onAction="#btnadd" prefHeight="32.0" prefWidth="102.0" style="-fx-background-color: #00f2ff;" styleClass="edge-button" stylesheets="@../Style/Style.css" text="ADD">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="316.0" layoutY="174.0" prefHeight="32.0" prefWidth="102.0" style="-fx-background-color: #00f2ff;" styleClass="edge-button" stylesheets="@../Style/Style.css" text="Update">
+            <JFXButton layoutX="316.0" layoutY="174.0" onAction="#btnupdate" prefHeight="32.0" prefWidth="102.0" style="-fx-background-color: #00f2ff;" styleClass="edge-button" stylesheets="@../Style/Style.css" text="Update">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="455.0" layoutY="172.0" prefHeight="32.0" prefWidth="102.0" style="-fx-background-color: #00f2ff;" styleClass="edge-button" stylesheets="@../Style/Style.css" text="Delect">
+            <JFXButton layoutX="455.0" layoutY="172.0" onAction="#btnDelecte" prefHeight="32.0" prefWidth="102.0" style="-fx-background-color: #00f2ff;" styleClass="edge-button" stylesheets="@../Style/Style.css" text="Delete">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </JFXButton>
-            <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="599.0" layoutY="171.0" prefHeight="32.0" prefWidth="102.0" style="-fx-background-color: #00f2ff;" styleClass="edge-button" stylesheets="@../Style/Style.css" text="Clear">
+            <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="599.0" layoutY="171.0" onAction="#btnClear" prefHeight="32.0" prefWidth="102.0" style="-fx-background-color: #00f2ff;" styleClass="edge-button" stylesheets="@../Style/Style.css" text="Clear">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </JFXButton>
-            <JFXComboBox layoutX="306.0" layoutY="16.0" prefHeight="25.0" prefWidth="237.0" promptText="Customer ID" />
+            <JFXComboBox fx:id="cmdCusId" layoutX="306.0" layoutY="16.0" prefHeight="25.0" prefWidth="237.0" promptText="Customer ID" />
          </children>
       </Pane>
       <Pane layoutX="15.0" layoutY="271.0" prefHeight="476.0" prefWidth="840.0" style="-fx-background-color: white; -fx-background-radius: 20;" stylesheets="@../Style/Style.css">
@@ -60,12 +60,12 @@
                   <DropShadow spread="0.07" />
                </effect>
             </TableView>
-            <TextField layoutX="20.0" layoutY="40.0" prefHeight="32.0" prefWidth="226.0" promptText="Payment ID" />
-            <Button layoutX="261.0" layoutY="42.0" mnemonicParsing="false" styleClass="edge-button" text="Search" />
+            <TextField fx:id="txtpaymentId" layoutX="20.0" layoutY="40.0" prefHeight="32.0" prefWidth="226.0" promptText="Payment ID" />
+            <Button layoutX="261.0" layoutY="42.0" mnemonicParsing="false" onAction="#btnsearch" styleClass="edge-button" text="Search" />
          </children>
       </Pane>
-      <JFXTextField layoutX="42.0" layoutY="95.0" prefHeight="25.0" prefWidth="237.0" promptText="Bank" />
-      <JFXTextField layoutX="590.0" layoutY="39.0" prefHeight="25.0" prefWidth="237.0" promptText="ProductName" />
-      <JFXTextField layoutX="324.0" layoutY="96.0" prefHeight="25.0" prefWidth="237.0" promptText="Account-no" />
+      <JFXTextField fx:id="txtbank" layoutX="42.0" layoutY="95.0" prefHeight="25.0" prefWidth="237.0" promptText="Bank" />
+      <JFXTextField fx:id="txtPname" layoutX="590.0" layoutY="39.0" prefHeight="25.0" prefWidth="237.0" promptText="ProductName" />
+      <JFXTextField fx:id="txtaccountno" layoutX="324.0" layoutY="96.0" prefHeight="25.0" prefWidth="237.0" promptText="Account-no" />
    </children>
 </AnchorPane>
