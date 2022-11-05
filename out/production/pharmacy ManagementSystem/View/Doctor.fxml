@@ -12,30 +12,30 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="750.0" prefWidth="875.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="750.0" prefWidth="875.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DoctorController">
    <children>
       <Pane layoutX="18.0" layoutY="25.0" prefHeight="152.0" prefWidth="840.0" style="-fx-background-color: darkgray; -fx-background-radius: 20;">
          <effect>
             <DropShadow height="32.62" radius="12.905" />
          </effect>
          <children>
-            <JFXTextField layoutX="25.0" layoutY="18.0" prefHeight="25.0" prefWidth="237.0" promptText="Doctor ID" />
-            <JFXButton layoutX="309.0" layoutY="93.0" prefHeight="32.0" prefWidth="102.0" style="-fx-background-color: #00f2ff;" styleClass="edge-button" stylesheets="@../Style/Style.css" text="ADD">
+            <JFXTextField fx:id="txtDid" layoutX="25.0" layoutY="18.0" prefHeight="25.0" prefWidth="237.0" promptText="Doctor ID" />
+            <JFXButton layoutX="309.0" layoutY="93.0" onAction="#btnadd" prefHeight="32.0" prefWidth="102.0" style="-fx-background-color: #00f2ff;" styleClass="edge-button" stylesheets="@../Style/Style.css" text="ADD">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="428.0" layoutY="93.0" prefHeight="32.0" prefWidth="102.0" style="-fx-background-color: #00f2ff;" styleClass="edge-button" stylesheets="@../Style/Style.css" text="Update">
+            <JFXButton layoutX="428.0" layoutY="93.0" onAction="#btnupdate" prefHeight="32.0" prefWidth="102.0" style="-fx-background-color: #00f2ff;" styleClass="edge-button" stylesheets="@../Style/Style.css" text="Update">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="548.0" layoutY="93.0" prefHeight="32.0" prefWidth="102.0" style="-fx-background-color: #00f2ff;" styleClass="edge-button" stylesheets="@../Style/Style.css" text="Delect">
+            <JFXButton layoutX="548.0" layoutY="93.0" onAction="#btndelete" prefHeight="32.0" prefWidth="102.0" style="-fx-background-color: #00f2ff;" styleClass="edge-button" stylesheets="@../Style/Style.css" text="Delete">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="659.0" layoutY="93.0" prefHeight="32.0" prefWidth="102.0" style="-fx-background-color: #00f2ff;" styleClass="edge-button" stylesheets="@../Style/Style.css" text="Clear">
+            <JFXButton layoutX="659.0" layoutY="93.0" onAction="#btnclear" prefHeight="32.0" prefWidth="102.0" style="-fx-background-color: #00f2ff;" styleClass="edge-button" stylesheets="@../Style/Style.css" text="Clear">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -52,7 +52,7 @@
                   </Button>
                </children>
             </Pane>
-            <JFXComboBox layoutX="25.0" layoutY="81.0" prefHeight="25.0" prefWidth="237.0" promptText="Experiennce" />
+            <JFXComboBox fx:id="cmdEx" layoutX="25.0" layoutY="81.0" prefHeight="25.0" prefWidth="237.0" promptText="Experiennce" />
          </children>
       </Pane>
       <Pane layoutX="301.0" layoutY="211.0" prefHeight="514.0" prefWidth="554.0" style="-fx-background-color: white; -fx-background-radius: 20;" stylesheets="@../Style/Style.css">
@@ -71,11 +71,11 @@
                   <DropShadow spread="0.07" />
                </effect>
             </TableView>
-            <TextField layoutX="14.0" layoutY="39.0" prefHeight="25.0" prefWidth="226.0" promptText="Doctor ID" />
-            <Button layoutX="248.0" layoutY="39.0" mnemonicParsing="false" styleClass="edge-button" text="Search" />
+            <TextField fx:id="DID" layoutX="14.0" layoutY="39.0" prefHeight="25.0" prefWidth="226.0" promptText="Doctor ID" />
+            <Button layoutX="248.0" layoutY="39.0" mnemonicParsing="false" onAction="#btnsearch" styleClass="edge-button" text="Search" />
          </children>
       </Pane>
-      <JFXTextField layoutX="316.0" layoutY="35.0" prefHeight="25.0" prefWidth="237.0" promptText="Doctor Name" />
-      <JFXTextField layoutX="590.0" layoutY="38.0" prefHeight="25.0" prefWidth="237.0" promptText="Address" />
+      <JFXTextField fx:id="Dname" layoutX="316.0" layoutY="35.0" prefHeight="25.0" prefWidth="237.0" promptText="Doctor Name" />
+      <JFXTextField fx:id="txtaddress" layoutX="590.0" layoutY="38.0" prefHeight="25.0" prefWidth="237.0" promptText="Address" />
    </children>
 </AnchorPane>
