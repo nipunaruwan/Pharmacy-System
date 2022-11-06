@@ -1,19 +1,21 @@
 package Controller;
 
+import View.Tm.CustomerTm;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import db.DbConnection;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import model.Customer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class CustomerController {
     public JFXTextField txtcname;
@@ -21,10 +23,62 @@ public class CustomerController {
     public JFXComboBox cmbDId;
     public JFXTextField txtCustD;
     public TextField txtCustID;
+    public TableColumn colcusid;
+    public TableColumn colcusname;
+    public TableColumn colcusaddress;
+    public TableColumn coldoctorid;
+    public TableView<CustomerTm>  tblcustomer;
 
     public void initialize(){
+        colcusid.setCellValueFactory(new PropertyValueFactory<>("CID"));
+        colcusname.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        colcusaddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        coldoctorid.setCellValueFactory(new PropertyValueFactory<>("DID"));
+
+       loadAllCustomer();
+
+       tblcustomer .getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            txtCustD.setText(newValue.getCID());
+            txtcname.setText(newValue.getName());
+            txtcaddress.setText(newValue.getAddress());
+            cmbDId.setValue(newValue.getDID());
+
+        });
+
         loadDoctorIds();
     }
+
+    private void loadAllCustomer() {
+        ArrayList<Customer> customers = new ArrayList<>();
+        ObservableList<CustomerTm> objects = FXCollections.observableArrayList();
+
+        try {
+            Connection connection = DbConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Customer");
+            ResultSet rst = preparedStatement.executeQuery();
+
+            while (rst.next()) {
+                customers.add(new Customer(
+                        rst.getString(1),
+                        rst.getString(2),
+                        rst.getString(3),
+                        rst.getString(4))
+
+                );
+            }
+            for (Customer Cus : customers) {
+                objects.add(new CustomerTm(Cus.getCID(), Cus.getName(), Cus.getAddress(), Cus.getDID()));
+            }
+            tblcustomer.setItems(objects);
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
     private void loadDoctorIds() {
         try {
