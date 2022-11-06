@@ -6,7 +6,7 @@ public class Customer {
     private String address;
     private String DID;
 
-    public Customer() {
+    public Customer(String string, String rstString, String s, String string1, String rstString1) {
     }
 
     public Customer(String CID, String name, String address, String DID) {

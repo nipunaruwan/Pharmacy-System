@@ -10,6 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
 import model.Customer;
+import model.Item;
 
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -26,11 +27,21 @@ public class OrderDetailsController {
     public JFXTextField txtdId;
     public JFXTextField txtName;
     public JFXTextField txtCustomerAddress;
+    public JFXComboBox cmdpcode;
+    public JFXTextField txtdiscription;
+    public JFXTextField txtpname;
+    public JFXTextField txtqty;
+    public JFXTextField txtprice;
 
     public void initialize() {
         initClock();
         setChart();
         loadCustomerIds();
+        loaditemIds();
+
+        cmdpcode.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+           getitemDetails((Item) newValue);
+        });
 
         cmbCustomerIds.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             getCustomerDetails((String) newValue);
@@ -55,6 +66,29 @@ public class OrderDetailsController {
     private void loadCustomerIds() {
         try {
             cmbCustomerIds.setItems(FXCollections.observableArrayList(CustomerCrudController.getCustomerIds()));
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+    private void getitemDetails(Item selectItemcode) {
+        try {
+            Item item= ItemCrudController.getitem(selectItemcode);
+            if (item!=null) {
+                txtName.setText(item.getNAME());
+                txtdiscription.setText(item.getDISCRIPTION());
+                txtqty.setText(String.valueOf(item.getQTY()));
+               txtprice.setText(String.valueOf(item.getPRICE()));
+
+            }else{
+                new Alert(Alert.AlertType.WARNING,"Empty Result").show();
+            }
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+    private void loaditemIds() {
+        try {
+            cmdpcode.setItems(FXCollections.observableArrayList(ItemCrudController.getitem()));
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }

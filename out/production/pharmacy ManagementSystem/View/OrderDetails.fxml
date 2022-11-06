@@ -150,11 +150,11 @@
             <DropShadow />
          </effect>
          <children>
-            <JFXComboBox layoutX="22.0" layoutY="12.0" prefHeight="25.0" prefWidth="160.0" promptText="P-code" />
-            <JFXTextField layoutX="21.0" layoutY="60.0" prefHeight="25.0" prefWidth="160.0" promptText="Discription" />
-            <JFXTextField layoutX="213.0" layoutY="12.0" prefHeight="25.0" prefWidth="142.0" promptText="Product name" />
-            <JFXTextField layoutX="218.0" layoutY="60.0" prefHeight="25.0" prefWidth="142.0" promptText="Qty" />
-            <JFXTextField layoutX="22.0" layoutY="105.0" prefHeight="25.0" prefWidth="160.0" promptText="Price" />
+            <JFXComboBox fx:id="cmdpcode" layoutX="22.0" layoutY="12.0" prefHeight="25.0" prefWidth="160.0" promptText="P-code" />
+            <JFXTextField fx:id="txtdiscription" layoutX="21.0" layoutY="60.0" prefHeight="25.0" prefWidth="160.0" promptText="Discription" />
+            <JFXTextField fx:id="txtpname" layoutX="213.0" layoutY="12.0" prefHeight="25.0" prefWidth="142.0" promptText="Product name" />
+            <JFXTextField fx:id="txtqty" layoutX="218.0" layoutY="60.0" prefHeight="25.0" prefWidth="142.0" promptText="Qty" />
+            <JFXTextField fx:id="txtprice" layoutX="22.0" layoutY="105.0" prefHeight="25.0" prefWidth="160.0" promptText="Price" />
             <JFXTextField layoutX="218.0" layoutY="105.0" prefHeight="25.0" prefWidth="142.0" promptText="Qty On  Hand" />
          </children>
       </Pane>
