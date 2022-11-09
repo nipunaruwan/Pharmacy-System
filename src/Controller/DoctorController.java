@@ -1,13 +1,17 @@
 package Controller;
 
+import View.Tm.CustomerTm;
+import View.Tm.DoctorTm;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import db.DbConnection;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import model.Customer;
 import model.Doctor;
 
 import javax.xml.transform.Result;
@@ -26,11 +30,60 @@ public class DoctorController implements Initializable {
     public JFXTextField Dname;
     public JFXTextField txtaddress;
     public TextField DID;
+    public TableView<DoctorTm> tbldoctor;
+    public TableColumn coldocid;
+    public TableColumn coldocname;
+    public TableColumn coldocaddress;
+    public TableColumn cpldocex;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         cmdEx.getItems().addAll("1 year", "2 year", "3 year","4 year","5 year");
+
+        coldocid.setCellValueFactory(new PropertyValueFactory<>("DID"));
+        coldocname.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        coldocaddress.setCellValueFactory(new PropertyValueFactory<>("Address"));
+        cpldocex.setCellValueFactory(new PropertyValueFactory<>("Experiennce"));
+        loadAllDoctor();
+
+       tbldoctor .getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+           txtDid.setText(newValue.getDID());
+            Dname.setText(newValue.getName());
+           txtaddress.setText(newValue.getAddress());
+            cmdEx.setValue(newValue.getExperiennce());
+
+        });
+    }
+
+    private void loadAllDoctor() {
+        ArrayList<Doctor> doctors = new ArrayList<>();
+        ObservableList<DoctorTm> objects = FXCollections.observableArrayList();
+
+        try {
+            Connection connection = DbConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM doctor");
+            ResultSet rst = preparedStatement.executeQuery();
+
+            while (rst.next()) {
+                doctors.add(new Doctor(
+                        rst.getString(1),
+                        rst.getString(2),
+                        rst.getString(3),
+                        rst.getString(4))
+
+                );
+            }
+            for (Doctor doc : doctors) {
+                objects.add(new DoctorTm(doc.getDID(), doc.getName(), doc.getAddress(), doc.getExperiennce()));
+            }
+            tbldoctor.setItems(objects);
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public static List<String> getDoctorIds() throws SQLException, ClassNotFoundException {

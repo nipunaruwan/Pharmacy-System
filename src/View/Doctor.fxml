@@ -60,12 +60,12 @@
             <DropShadow />
          </effect>
          <children>
-            <TableView layoutX="22.0" layoutY="94.0" prefHeight="396.0" prefWidth="494.0" stylesheets="@../Style/Style.css">
+            <TableView fx:id="tbldoctor" layoutX="22.0" layoutY="94.0" prefHeight="396.0" prefWidth="494.0" stylesheets="@../Style/Style.css">
                <columns>
-                  <TableColumn prefWidth="109.0" text="Doctor ID" />
-                  <TableColumn prefWidth="134.0" text="Doctor Name" />
-                  <TableColumn prefWidth="145.0" text="Address" />
-                  <TableColumn prefWidth="105.0" text="Experience" />
+                  <TableColumn fx:id="coldocid" prefWidth="109.0" text="Doctor ID" />
+                  <TableColumn fx:id="coldocname" prefWidth="134.0" text="Doctor Name" />
+                  <TableColumn fx:id="coldocaddress" prefWidth="145.0" text="Address" />
+                  <TableColumn fx:id="cpldocex" prefWidth="105.0" text="Experience" />
                </columns>
                <effect>
                   <DropShadow spread="0.07" />
