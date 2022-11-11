@@ -18,10 +18,10 @@
             <DropShadow />
          </effect>
          <children>
-            <TableView layoutX="16.0" layoutY="111.0" prefHeight="589.0" prefWidth="456.0" stylesheets="@../Style/Style.css">
+            <TableView fx:id="tblDiliver" layoutX="16.0" layoutY="111.0" prefHeight="589.0" prefWidth="456.0" stylesheets="@../Style/Style.css">
                <columns>
-                  <TableColumn prefWidth="223.0" text="DeliiverID" />
-                  <TableColumn prefWidth="232.0" text="Deliver name" />
+                  <TableColumn fx:id="colDsid" prefWidth="223.0" text="DeliiverID" />
+                  <TableColumn fx:id="coldsname" prefWidth="232.0" text="Deliver name" />
                </columns>
                <effect>
                   <DropShadow spread="0.07" />

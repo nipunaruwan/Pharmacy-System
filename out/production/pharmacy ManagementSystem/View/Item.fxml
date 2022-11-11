@@ -46,13 +46,13 @@
             <DropShadow />
          </effect>
          <children>
-            <TableView layoutX="22.0" layoutY="94.0" prefHeight="356.0" prefWidth="790.0" stylesheets="@../Style/Style.css">
+            <TableView fx:id="tblitem" layoutX="22.0" layoutY="94.0" prefHeight="356.0" prefWidth="790.0" stylesheets="@../Style/Style.css">
                <columns>
-                  <TableColumn prefWidth="109.0" text="P-Code" />
-                  <TableColumn prefWidth="134.0" text="Product name" />
-                  <TableColumn prefWidth="200.0" text="Discription" />
-                  <TableColumn prefWidth="149.0" text="QTY" />
-                  <TableColumn prefWidth="195.0" text="Price" />
+                  <TableColumn fx:id="colcode" prefWidth="109.0" text="P-Code" />
+                  <TableColumn fx:id="colpname" prefWidth="134.0" text="Product name" />
+                  <TableColumn fx:id="coldiscription" prefWidth="200.0" text="Discription" />
+                  <TableColumn fx:id="colqty" prefWidth="149.0" text="QTY" />
+                  <TableColumn fx:id="colprice" prefWidth="195.0" text="Price" />
                </columns>
                <effect>
                   <DropShadow spread="0.07" />

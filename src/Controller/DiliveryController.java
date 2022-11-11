@@ -1,22 +1,78 @@
 package Controller;
 
+import View.Tm.CustomerTm;
+import View.Tm.DiliveryServiceTm;
 import com.jfoenix.controls.JFXTextField;
 import db.DbConnection;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import model.Customer;
 import model.DiliveryService;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class DiliveryController {
     public TextField txtDsID;
     public JFXTextField txtDs;
     public JFXTextField txtDsname;
+    public TableView<DiliveryServiceTm> tblDiliver;
+    public TableColumn colDsid;
+    public TableColumn coldsname;
+
+    public void initialize(){
+        colDsid.setCellValueFactory(new PropertyValueFactory<>("DSID"));
+        coldsname.setCellValueFactory(new PropertyValueFactory<>("DSNAME"));
+
+
+        loadAllCustomer();
+
+        tblDiliver .getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+           txtDs.setText(newValue.getDSID());
+            txtDsname.setText(newValue.getDSNAME());
+
+
+        });
+
+
+    }
+
+    private void loadAllCustomer() {
+        ArrayList<DiliveryService> diliveryServices = new ArrayList<>();
+        ObservableList<DiliveryServiceTm> objects = FXCollections.observableArrayList();
+
+        try {
+            Connection connection = DbConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM dilevary");
+            ResultSet rst = preparedStatement.executeQuery();
+
+            while (rst.next()) {
+                diliveryServices.add(new DiliveryService(
+                        rst.getString(1),
+                        rst.getString(2))
+
+
+                );
+            }
+            for (DiliveryService diliveryService : diliveryServices) {
+                objects.add(new DiliveryServiceTm(diliveryService.getDSID(), diliveryService.getDSNAME()));
+            }
+            tblDiliver.setItems(objects);
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
     public void btnsearch(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         Connection connection = DbConnection.getInstance().getConnection();

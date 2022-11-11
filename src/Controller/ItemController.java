@@ -1,17 +1,22 @@
 package Controller;
 
+import View.Tm.CustomerTm;
+import View.Tm.ItemTm;
 import com.jfoenix.controls.JFXTextField;
 import db.DbConnection;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import model.Customer;
 import model.Item;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ItemController {
     public TextField txtcode1;
@@ -20,6 +25,65 @@ public class ItemController {
     public JFXTextField txtqty;
     public JFXTextField txtprice;
     public JFXTextField txtcode;
+    public TableView <ItemTm>tblitem;
+    public TableColumn colcode;
+    public TableColumn colpname;
+    public TableColumn coldiscription;
+    public TableColumn colqty;
+    public TableColumn colprice;
+
+    public void initialize(){
+        colcode.setCellValueFactory(new PropertyValueFactory<>("PCODE"));
+        colpname.setCellValueFactory(new PropertyValueFactory<>("NAME"));
+        coldiscription.setCellValueFactory(new PropertyValueFactory<>("DISCRIPTION"));
+        colqty.setCellValueFactory(new PropertyValueFactory<>("QTY"));
+        colprice.setCellValueFactory(new PropertyValueFactory<>("PRICE"));
+
+        loadAllItem();
+
+        tblitem .getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            txtcode.setText(newValue.getPCODE());
+            txtpname.setText(newValue.getNAME());
+            txtdiscription.setText(newValue.getDISCRIPTION());
+            txtqty.setText(String.valueOf(newValue.getQTY()));
+            txtprice.setText(String.valueOf(newValue.getPRICE()));
+
+        });
+
+
+    }
+
+    private void loadAllItem() {
+        ArrayList<Item> items = new ArrayList<>();
+        ObservableList<ItemTm> objects = FXCollections.observableArrayList();
+
+        try {
+            Connection connection = DbConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM item");
+            ResultSet rst = preparedStatement.executeQuery();
+
+            while (rst.next()) {
+                items.add(new Item(
+                        rst.getString(1),
+                        rst.getString(2),
+                        rst.getString(3),
+                        rst.getInt(4),
+                        rst.getDouble(5))
+
+                );
+            }
+            for (Item item : items) {
+                objects.add(new ItemTm(item.getPCODE(), item.getNAME(), item.getDISCRIPTION(), item.getQTY(),item.getPRICE()));
+            }
+            tblitem.setItems(objects);
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public void btnsave(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         Item item = new Item((txtcode.getText()),txtpname.getText(),txtdiscription.getText(),Integer.parseInt(txtqty.getText()),Double.parseDouble(txtprice.getText()));
