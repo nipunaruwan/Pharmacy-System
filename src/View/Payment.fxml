@@ -48,13 +48,13 @@
             <DropShadow />
          </effect>
          <children>
-            <TableView layoutX="22.0" layoutY="94.0" prefHeight="356.0" prefWidth="790.0" stylesheets="@../Style/Style.css">
+            <TableView fx:id="tblpayment" layoutX="22.0" layoutY="94.0" prefHeight="356.0" prefWidth="790.0" stylesheets="@../Style/Style.css">
                <columns>
-                  <TableColumn prefWidth="109.0" text="Payment ID" />
-                  <TableColumn prefWidth="134.0" text="Customer ID" />
-                  <TableColumn prefWidth="200.0" text="Product name" />
-                  <TableColumn prefWidth="149.0" text="Bank" />
-                  <TableColumn prefWidth="195.0" text="Account-no" />
+                  <TableColumn fx:id="colpaymentid" prefWidth="109.0" text="Payment ID" />
+                  <TableColumn fx:id="colcusid" prefWidth="134.0" text="Customer ID" />
+                  <TableColumn fx:id="colpname" prefWidth="200.0" text="Product name" />
+                  <TableColumn fx:id="colbank" prefWidth="149.0" text="Bank" />
+                  <TableColumn fx:id="colaccountno" prefWidth="195.0" text="Account-no" />
                </columns>
                <effect>
                   <DropShadow spread="0.07" />

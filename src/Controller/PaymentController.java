@@ -1,19 +1,24 @@
 package Controller;
 
+import View.Tm.CustomerTm;
+import View.Tm.ItemTm;
+import View.Tm.PaymentTm;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import db.DbConnection;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import model.Customer;
 import model.Payment;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class PaymentController {
     public JFXTextField txtpayment;
@@ -22,12 +27,65 @@ public class PaymentController {
     public JFXTextField txtaccountno;
     public JFXComboBox cmdCusId;
     public TextField txtpaymentId;
+    public TableColumn colpaymentid;
+    public TableColumn colcusid;
+    public TableColumn colpname;
+    public TableColumn colbank;
+    public TableColumn colaccountno;
+    public TableView<PaymentTm> tblpayment;
 
     public void initialize(){
         loadCustomerIds();
+       colpaymentid.setCellValueFactory(new PropertyValueFactory<>("PID"));
+        colcusid.setCellValueFactory(new PropertyValueFactory<>("CID"));
+        colpname.setCellValueFactory(new PropertyValueFactory<>("Productname"));
+        colbank.setCellValueFactory(new PropertyValueFactory<>("Bank"));
+       colaccountno.setCellValueFactory(new PropertyValueFactory<>("accountno"));
+
+        loadAllPayment();
+
+       tblpayment .getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            txtpaymentId.setText(newValue.getPID());
+           cmdCusId.setValue(newValue.getCID());
+           txtPname.setText(newValue.getProductname());
+           txtbank.setText(newValue.getBank());
+           txtaccountno.setText(newValue.getAccountno());
+
+
+        });
+
     }
 
+    private void loadAllPayment() {
+        ArrayList<Payment> payments = new ArrayList<>();
+        ObservableList<PaymentTm> objects = FXCollections.observableArrayList();
 
+        try {
+            Connection connection = DbConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM payment");
+            ResultSet rst = preparedStatement.executeQuery();
+
+            while (rst.next()) {
+               payments.add(new Payment(
+                        rst.getString(1),
+                        rst.getString(2),
+                        rst.getString(3),
+                        rst.getString(4),
+                        rst.getString(5))
+
+                );
+            }
+            for (Payment payment : payments) {
+                objects.add(new PaymentTm(payment.getPID(), payment.getCID(), payment.getProductname(), payment.getBank(),payment.getAccountno()));
+            }
+            tblpayment.setItems(objects);
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     public void btnadd(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {

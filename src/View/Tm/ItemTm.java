@@ -7,7 +7,7 @@ public class ItemTm {
     private int QTY;
     private double PRICE;
 
-    public ItemTm() {
+    public ItemTm(String pid, String cid, String productname, String bank, String accountno) {
     }
 
     public ItemTm(String PCODE, String NAME, String DISCRIPTION, int QTY, double PRICE) {
